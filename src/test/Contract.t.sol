@@ -63,6 +63,10 @@ contract ContractTest is DSTest {
         assertEq(puzzlewallet.balances(address(hack)), 0.002 ether);
     }
 
+    function testWhitelisted() public {
+        assertEq(puzzlewallet.whitelisted(address(hack)), true);
+    }
+
     function testLazyHack() public {
         cheat.startPrank(player);  
         hack.callMulticall{value: 0.001 ether}();
